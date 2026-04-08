@@ -18,10 +18,10 @@ def extraer_info_completa(ruta_imagen):
         exif_data = imagen._getexif()
         
         if not exif_data:
-            print("No se encontraron metadatos EXIF en esta imagen.")
+            print("No EXIF ​​metadata was found in this file.")
             return
 
-        print(f"{'INFORMACIÓN DE LA CÁMARA':^50}")
+        print(f"{'Camera Infomation':^50}")
         info_gps = {}
         
         for tag_id, valor in exif_data.items():
@@ -35,19 +35,19 @@ def extraer_info_completa(ruta_imagen):
                 if tag in ['Make', 'Model', 'ExposureTime', 'FNumber', 'ISOSpeedRatings', 'DateTime']:
                     print(f"{tag:20}: {valor}")
 
-        print(f"\n{'Coordenadas GPS':^50}")
+        print(f"\n{'Location':^50}")
         if 'GPSLatitude' in info_gps and 'GPSLongitude' in info_gps:
             lat = obtener_decimal_from_obj(info_gps['GPSLatitude'], info_gps['GPSLatitudeRef'])
             lon = obtener_decimal_from_obj(info_gps['GPSLongitude'], info_gps['GPSLongitudeRef'])
             
-            print(f"Latitud: {lat}")
-            print(f"Longitud: {lon}")
+            print(f"Latitude: {lat}")
+            print(f"Longitude: {lon}")
             print(f"Google Maps: https://www.google.com/maps?q={lat},{lon}")
         else:
-            print("La imagen no contiene coordenadas GPS.")
+            print("No data location was found")
 
     except Exception as e:
-        print(f"Error al procesar la imagen: {e}")
+        print(f"Error processing image: {e}")
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--url", required=True, type=str)

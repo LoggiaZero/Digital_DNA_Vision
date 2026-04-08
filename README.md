@@ -27,3 +27,25 @@ The project is implemented in **Python** and operates within a dedicated virtual
 * **Corporate Email:** [jsaenz@loggiazero.com.mx](mailto:jsaenz@loggiazero.com.mx)  
 * **Academic Email:** [jsaenz@ujed.mx](mailto:jsaenz@ujed.mx)  
 * **LinkedIn:** [linkedin.com/in/armandosaenz/](https://www.linkedin.com/in/armandosaenz/)
+
+---
+
+## Documentation: meta_img.py
+
+This script is responsible for the initial forensic layer: **Metadata Extraction**. It parses the image file to retrieve embedded information that can identify the source device and the conditions under which the image was captured.
+
+### Description
+The script extracts EXIF (Exchangeable Image File Format) data, specifically targeting:
+* **Device Information:** Cellphone brand and model.
+* **Camera Parameters:** Aperture, shutter speed, ISO, and focal length.
+* **Geospatial Data:** GPS coordinates and location timestamps.
+
+If the file has been stripped of its metadata or was created in a way that does not generate EXIF headers, the script will return:  
+`No EXIF metadata was found in this file`
+
+### Syntax
+To run the analysis, use the following command in your terminal:
+
+```bash
+python meta_img.py --url image_path
+```
