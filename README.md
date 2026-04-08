@@ -1,53 +1,122 @@
 # Digital DNA Vision
 
-**Digital DNA Vision** is a collaborative forensic tool developed through a strategic partnership between **Corporativo LZ** and **FICA-UJED** (Facultad de Ingeniería, Ciencias y Arquitectura de la Universidad Juárez del Estado de Durango). Based in **Gómez Palacio, Durango**, this project unites industrial expertise with academic research to address the challenges of digital authenticity.
-
-The repository is designed to detect digital alterations in images by analyzing their "digital DNA"—the underlying metadata and pixel-level patterns that remain after manipulation.
-
-### Technical Overview
-The project is implemented in **Python** and operates within a dedicated virtual environment (`venv`). It leverages a specialized stack of libraries to perform five fundamental forensic functions:
-
-* **Metadata Analysis:** Uses `Pillow` to extract hidden EXIF data and file properties.
-* **Channel Decomposition:** Uses `OpenCV` to split RGB channels and analyze color space distributions.
-* **Structural Filtering:** Applies border and edge detection filters via `OpenCV` to find anomalies in image composition.
-* **Frequency Domain Inspection:** Computes the **Fourier Transform** to analyze the frequency spectrum for signs of resampling or synthetic noise.
-* **Data Visualization:** Utilizes `Matplotlib` to generate forensic reports and visual representations of the processed data.
-
-### Project Specifications
-* **Location:** Gómez Palacio, Durango, México
-* **License:** [MIT](https://choosealicense.com/licenses/mit/)
-* **Environment:** Python `venv`
-* **Partners:** Corporativo LZ & FICA-UJED
+**Digital DNA Vision** is a forensic toolkit designed to detect digital image alterations by analyzing "digital DNA"—the metadata and pixel-level patterns left after manipulation. Developed in a strategic partnership between **Corporativo LZ** and **FICA-UJED** (Facultad de Ingeniería, Ciencias y Arquitectura, Universidad Juárez del Estado de Durango).
 
 ---
 
-### Contact Information
-**Ph.D. José Armando Sáenz Esqueda** 
-* **Corporate Email:** [jsaenz@loggiazero.com.mx](mailto:jsaenz@loggiazero.com.mx)  
-* **Academic Email:** [jsaenz@ujed.mx](mailto:jsaenz@ujed.mx)  
-* **LinkedIn:** [linkedin.com/in/armandosaenz/](https://www.linkedin.com/in/armandosaenz/)
+## Table of Contents
+
+- [Features](#features)
+- [Technical Overview](#technical-overview)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Metadata Extraction (`meta_img.py`)](#metadata-extraction-meta_imgpy)
+- [Project Specifications](#project-specifications)
+- [Contact](#contact)
+- [License](#license)
 
 ---
 
-## Documentation: meta_img.py
+## Features
 
-This script is responsible for the initial forensic layer: **Metadata Extraction**. It parses the image file to retrieve embedded information that can identify the source device and the conditions under which the image was captured.
+- **Metadata Analysis:** Extract hidden EXIF and file properties
+- **Color Channel Decomposition:** Analyze color space distributions
+- **Structural Filtering:** Detect image border and edge anomalies
+- **Frequency Spectrum Analysis:** Reveal resampling/synthetic noise
+- **Data Visualization:** Produce forensic reports and visual summaries
 
-### Description
-The script extracts EXIF (Exchangeable Image File Format) data, specifically targeting:
-* **Device Information:** Cellphone brand and model.
-* **Camera Parameters:** Aperture, shutter speed, ISO, and focal length.
-* **Geospatial Data:** GPS coordinates and location timestamps.
+---
 
-If the file has been stripped of its metadata or was created in a way that does not generate EXIF headers, the script will return:  
-`No EXIF metadata was found in this file`
+## Technical Overview
 
-### Syntax
-To run the analysis, use the following command in your terminal:
+- **Language:** Python (100%)
+- **Environment:** Python 3.x, virtual environment (`venv`)
+- Uses:
+  - `Pillow` for extracting EXIF metadata
+  - `OpenCV` for color spaces and edge filtering
+  - `Matplotlib` for visualizations
+  - FFT libraries for frequency domain analysis
 
+---
+
+## Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/LoggiaZero/Digital_DNA_Vision.git
+   cd Digital_DNA_Vision
+   ```
+
+2. **Create and activate a virtual environment:**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+   If `requirements.txt` is missing, ensure you install:
+   ```
+   pip install pillow opencv-python matplotlib
+   ```
+
+---
+
+## Usage
+
+### Metadata Extraction (`meta_img.py`)
+
+This script is responsible for the initial forensic layer: **Metadata Extraction**. It parses the image file to extract embedded EXIF information that can help identify the source device and capture conditions.
+
+- **Extracted Data:**
+  - Device information (brand, model)
+  - Camera parameters (aperture, shutter speed, ISO, focal length)
+  - Geospatial data (GPS, location timestamps)
+
+If no EXIF headers are present, it will output:
+```
+No EXIF metadata was found in this file
+```
+
+**Command:**
 ```bash
 python meta_img.py --url image_path
 ```
 
-![Respuesta de una imagen con metadatos](/assets/meta_img_1.png "Respuesta de una imagen con metadatos")
-![Respuesta de una imagen sin metadatos](/assets/meta_img_2.png "Respuesta de una imagen sin metadatos")
+**Example:**
+```bash
+python meta_img.py --url ./samples/sample.jpg
+```
+
+**Sample Output:**
+- ![With metadata](/assets/meta_img_1.png "Image with metadata")
+- ![Without metadata](/assets/meta_img_2.png "Image without metadata")
+
+---
+
+## Project Specifications
+
+- **Location:** Gómez Palacio, Durango, México
+- **License:** [MIT License](https://choosealicense.com/licenses/mit/)
+- **Partners:** Corporativo LZ & FICA-UJED
+
+---
+
+## Contact
+
+**Ph.D. José Armando Sáenz Esqueda**
+- **Corporate Email:** [jsaenz@loggiazero.com.mx](mailto:jsaenz@loggiazero.com.mx)
+- **Academic Email:** [jsaenz@ujed.mx](mailto:jsaenz@ujed.mx)
+- **LinkedIn:** [linkedin.com/in/armandosaenz/](https://www.linkedin.com/in/armandosaenz/)
+
+---
+
+## License
+
+Distributed under the [MIT License](LICENSE).
+
+---
+
+_If you find this project useful, please consider citing or sharing it with your network!_
