@@ -1,6 +1,5 @@
 # Digital DNA Vision
 
-## Context
 **Digital DNA Vision** is a collaborative forensic tool developed through a strategic partnership between **Corporativo LZ** and **FICA-UJED** (Facultad de Ingeniería, Ciencias y Arquitectura de la Universidad Juárez del Estado de Durango). Based in **Gómez Palacio, Durango**, this project unites industrial expertise with academic research to address the challenges of digital authenticity.
 
 The repository is designed to detect digital alterations in images by analyzing their "digital DNA"—the underlying metadata and pixel-level patterns that remain after manipulation.
@@ -49,3 +48,6 @@ To run the analysis, use the following command in your terminal:
 ```bash
 python meta_img.py --url image_path
 ```
+
+![Respuesta de una imagen con metadatos](/assets/meta_img_1.png "Respuesta de una imagen con metadatos")
+![Respuesta de una imagen sin metadatos](/assets/meta_img_2.png "Respuesta de una imagen sin metadatos")
