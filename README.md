@@ -49,5 +49,34 @@ To run the analysis, use the following command in your terminal:
 python meta_img.py --url image_path
 ```
 
-![Respuesta de una imagen con metadatos](/assets/meta_img_1.png "Respuesta de una imagen con metadatos")
-![Respuesta de una imagen sin metadatos](/assets/meta_img_2.png "Respuesta de una imagen sin metadatos")
+### Examples
+
+![Output for an image with metadata](/assets/meta_img_1.png)
+*Figure 1: Output for an image with metadata*
+
+![Output for an image without metadata](/assets/meta_img_2.png)
+*Figure 2: Output for an image without metadata*
+
+## Documentation: SplitRGB.py
+
+This script performs **Chromatic Decomposition**, allowing for a detailed inspection of the individual color channels. This is essential in forensic analysis to detect inconsistencies in noise distribution or localized color manipulation that may not be visible in the full-color composite.
+
+### Description
+The script processes the input image and generates a single visualization window containing a 1x4 grid:
+1. **Original Image:** The source file in full color.
+2. **Red Channel:** Grayscale intensity map of the red spectrum.
+3. **Green Channel:** Grayscale intensity map of the green spectrum.
+4. **Blue Channel:** Grayscale intensity map of the blue spectrum.
+
+### Syntax
+Run the following command in your terminal:
+
+```bash
+python SplitRGB.py --url image_path
+```
+
+### Example
+
+![Expected output for SplitRGB.py](/assets/meta_img_1.png)
+*Figure 3: Expected output for SplitRGB.py*
+
